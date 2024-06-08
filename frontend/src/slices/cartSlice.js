@@ -11,6 +11,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
+      //action is the event that happened in the application
       const item = action.payload; // Extract the item from the action payload (data)
 
       // Check if the item is already in the cart
@@ -29,9 +30,16 @@ const cartSlice = createSlice({
 
       return updateCart(state);
     },
+    removeFromCart: (state, action) => {
+      state.cartItems = state.cartItems.filter(
+        (item) => item._id !== action.payload
+      );
+
+      return updateCart(state);
+    },
   },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, removeFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
