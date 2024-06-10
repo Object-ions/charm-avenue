@@ -10,7 +10,14 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    // this logout will destroy the cookie on the server
+    logout: builder.mutation({
+      query: {
+        url: `${USERS_URL}/logout`,
+        method: 'POST',
+      },
+    }),
   }),
 });
 
-export const { useLoginMutation } = usersApiSlice;
+export const { useLoginMutation, useLogoutMutation } = usersApiSlice;
