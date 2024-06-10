@@ -11,11 +11,12 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     // this logout will destroy the cookie on the server
+
     logout: builder.mutation({
-      query: {
+      query: () => ({
         url: `${USERS_URL}/logout`,
         method: 'POST',
-      },
+      }),
     }),
   }),
 });
