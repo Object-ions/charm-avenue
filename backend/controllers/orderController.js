@@ -33,11 +33,15 @@ const addOrderItems = asyncHandler(async (req, res) => {
       shippingPrice,
       totalPrice,
     });
+
+    const createdOrder = await order.save(); // Save the order to the database
+
+    res.status(201).json(createdOrder);
   }
 });
 
 // @desc Get logged in user orders
-// @route GET /api/orders/myorders
+// @route GET /api/orders/my-orders
 // @access Private
 const getMyOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({ user: req.user._id });
