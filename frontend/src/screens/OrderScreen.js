@@ -63,6 +63,42 @@ const OrderScreen = () => {
     }
   }, [order, paypal, paypalDispatch, errorPayPal, isLoadingPayPal]);
 
+  const onApprove = (data, actions) => {
+    return actions.order.capture().then(async (details) => {
+      try {
+        await payOrder({ orderId, details });
+        refetch();
+        toast.success('Payment Successful');
+      } catch (error) {
+        toast.error(error?.data?.message || error.message);
+      }
+    });
+  };
+
+  const onApproveTest = async () => {
+    await payOrder({ orderId, details: { payer: {} } });
+    refetch();
+    toast.success('Payment Successful');
+  };
+
+  const onError = (error) => {
+    toast.error(error.message);
+  };
+
+  const createOrder = async (data, actions) => {
+    return actions.order
+      .create({
+        purchase_units: [
+          {
+            amount: {
+              value: order.totalPrice,
+            },
+          },
+        ],
+      })
+      .then((orderId) => orderId);
+  };
+
   return isLoading ? (
     <Loader />
   ) : error ? (
@@ -154,6 +190,34 @@ const OrderScreen = () => {
                   <Col>$ {order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
+
+              {!order.isPaid && (
+                <ListGroup.Item>
+                  {isLoadingPay && <Loader />}
+                  {isPending ? (
+                    <Loader />
+                  ) : (
+                    <div>
+                      {/* PayPal Test Button */}
+                      {/* <button
+                        onClick={onApproveTest}
+                        style={{ marginBottom: '10px' }}
+                      >
+                        Test Pay Order
+                      </button> */}
+
+                      <div>
+                        <PayPalButtons
+                          createOrder={createOrder}
+                          onApprove={onApprove}
+                          onError={onError}
+                        ></PayPalButtons>
+                      </div>
+                    </div>
+                  )}
+                </ListGroup.Item>
+              )}
+
               {/* PAY ORDER PLACEHOLDER */}
               {/* MARK AS DELIVERED PLACEHOLDER */}
             </ListGroup>
