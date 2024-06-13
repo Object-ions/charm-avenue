@@ -15,7 +15,7 @@ const ProductEditScreen = () => {
   const { id: productId } = useParams();
 
   const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
+  const [price, setPrice] = useState(0);
   const [image, setImage] = useState('');
   const [brand, setBrand] = useState('');
   const [category, setCategory] = useState('');
@@ -51,24 +51,23 @@ const ProductEditScreen = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const updatedProduct = {
-      productId,
-      name,
-      price,
-      image,
-      brand,
-      category,
-      countInStock,
-      description,
-    };
+    try {
+      await updateProduct({
+        productId,
+        name,
+        price,
+        image,
+        brand,
+        category,
+        countInStock,
+        description,
+      }).unwrap(); //here we need to unwrap the Promise to catch any rejection in our catch block
 
-    const result = await updateProduct(updatedProduct);
-
-    if (result.error) {
-      toast.error(result.error.data?.message || result.error.message);
-    } else {
       toast.success('Product updated');
+      refetch();
       navigate('/admin/product-list');
+    } catch (error) {
+      toast.error(error.data?.message || error.message);
     }
   };
 
@@ -79,7 +78,7 @@ const ProductEditScreen = () => {
     try {
       const res = await uploadProductImage(formData).unwrap();
       toast.success(res?.message);
-      setImage(res.path);
+      setImage(res.image);
     } catch (error) {
       toast.error(error?.data?.message || error?.error);
     }
@@ -176,7 +175,11 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
 
-            <Button type="submit" variant="primary" className="my-2">
+            <Button
+              type="submit"
+              variant="primary"
+              style={{ marginTop: '1rem' }}
+            >
               Update
             </Button>
           </Form>
