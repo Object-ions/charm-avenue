@@ -29,7 +29,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
         method: 'PUT',
         body: data,
       }),
-      invalidatesTags: ['Product'],
+      invalidatesTags: ['Products'], // so we wont need to refresh the page to see the changes
     }),
   }),
 });
