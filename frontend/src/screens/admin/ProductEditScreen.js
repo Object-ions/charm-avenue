@@ -64,7 +64,7 @@ const ProductEditScreen = () => {
       }).unwrap(); //here we need to unwrap the Promise to catch any rejection in our catch block
 
       toast.success('Product updated');
-      refetch();
+      refetch(); // This ensures that the UI reflects the most up-to-date data from the server.
       navigate('/admin/product-list');
     } catch (error) {
       toast.error(error.data?.message || error.message);
