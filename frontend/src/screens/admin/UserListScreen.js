@@ -63,7 +63,7 @@ const UserListScreen = () => {
                 </td>
                 <td>
                   <LinkContainer
-                    to={`/admin/user-list/${user._id}/edit`}
+                    to={`/admin/users/${user._id}/edit`}
                     style={{ cursor: 'pointer' }}
                   >
                     <Button className="btn-sm" variant="light">
