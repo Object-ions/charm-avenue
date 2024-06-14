@@ -44,9 +44,8 @@ const UserEditScreen = () => {
         name,
         email,
         isAdmin,
-      }).unwrap(); //here we need to unwrap the Promise to catch any rejection in our catch block
-
-      toast.success('User updated');
+      });
+      toast.success('User updated Successfully');
       refetch(); // This ensures that the UI reflects the most up-to-date data from the server.
       navigate('/admin/user-list');
     } catch (error) {
