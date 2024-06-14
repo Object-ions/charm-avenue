@@ -5,12 +5,17 @@ import Product from '../models/productModel.js';
 // @route GET /api/products
 // @access public
 const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = 2;
+  const pageSize = 15;
   const page = Number(req.query.pageNumber) || 1;
-  const count = await Product.countDocuments(); // will get the total number of 'Product'
+
+  const keyword = req.query.keyword
+    ? { name: { $regex: req.query.keyword, $options: 'i' } }
+    : {}; // we want to match find not only if its directly same exact word, the 'i' is for case insensitive- so we can have a wide search
+
+  const count = await Product.countDocuments({ ...keyword }); // will get the total number of 'Product'
 
   // to get all of them we will pass an empty object
-  const products = await Product.find({})
+  const products = await Product.find({ ...keyword })
     .limit(pageSize)
     .skip(pageSize * (page - 1));
   res.json({ products, page, pages: Math.ceil(count / pageSize) });
