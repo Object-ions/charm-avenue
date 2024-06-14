@@ -49,7 +49,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
     getUserDetails: builder.query({
       query: (userId) => ({
         url: `${USERS_URL}/${userId}`,
-        method: 'DELETE',
+        method: 'GET',
       }),
       keepUnusedDataFor: 5,
     }),
