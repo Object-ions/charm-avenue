@@ -4,8 +4,11 @@ import { apiSlice } from './apiSlice';
 export const productsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: () => ({
+      query: ({ pageNumber }) => ({
         url: PRODUCTS_URL, // '/api/products'
+        params: {
+          pageNumber,
+        },
       }),
       keepUnusedDataFor: 5, // 5 seconds
       providesTags: ['Products'], // so we wont need to refresh the page to see the changes
