@@ -10,12 +10,6 @@ const errorHandler = (err, req, res, next) => {
 
   let message = err.message; // if we say 'throw new Error' we will have access to the message property in this variable
 
-  // Check for mongoose bad objectId
-  if (err.name === 'CastError' && err.kind === 'ObjectId') {
-    message = `Resource not found`;
-    statusCode = 404;
-  }
-
   // Final response
   res.status(statusCode).json({
     message,

@@ -33,7 +33,7 @@ function fileFilter(req, file, cb) {
   if (extname && mimetype) {
     cb(null, true);
   } else {
-    cb(new Error('Images only!'), false);
+    cb(new Error('Please select an image file'), false);
   }
 }
 
