@@ -169,6 +169,38 @@ p {
       }
     }
   }
+
+  .Promise {
+    padding-top: 5rem;
+    height: 25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h1 {
+      color: $primary-color;
+    }
+
+    h6 {
+      border-bottom: 1px solid $primary-color;
+      padding: 1rem 0;
+    }
+
+    .promise-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-gap: 5rem;
+
+      .promise-item {
+        .image-wrapper {
+          img {
+            width: 25%;
+          }
+        }
+      }
+    }
+  }
 }
 
 .button {
