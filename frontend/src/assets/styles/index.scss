@@ -183,14 +183,16 @@ p {
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-      width: 45%;
+      width: 50%;
       height: 25rem;
       text-align: center;
       padding: 2rem;
-      border: 10px solid $white-color;
+      margin: 1rem;
+      border: 10px solid $secondary-color;
 
+      h3,
       p {
-        font-weight: 200;
+        color: $secondary-color;
       }
     }
   }
