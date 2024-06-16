@@ -11,12 +11,13 @@ import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { HelmetProvider } from 'react-helmet-async';
 import store from './store';
 import './assets/styles/bootstrap.custom.css';
-import './assets/styles/index.css';
+import './assets/styles/index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import HomeScreen from './screens/HomeScreen';
 import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
+import HomeScreen from './screens/HomeScreen';
+import ProductsHomeScreen from './screens/ProductsHomeScreen';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import LoginScreen from './screens/LoginScreen';
@@ -36,7 +37,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} path="/" element={<HomeScreen />} />
-      <Route path="/search/:keyword" element={<HomeScreen />} />
+      <Route path="/products" element={<ProductsHomeScreen />} />
+      <Route path="/search/:keyword" element={<ProductsHomeScreen />} />
       <Route
         path="/search/:keyword/page/:pageNumber"
         element={<HomeScreen />}
