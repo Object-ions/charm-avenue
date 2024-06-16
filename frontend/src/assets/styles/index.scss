@@ -36,6 +36,64 @@ p {
     }
   }
 
+  footer {
+    @include fit-bg-image(10%);
+    height: 45rem;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+
+    .footer-text {
+      padding: 1rem;
+      width: 100%;
+      background: $primary-color;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+
+      h2 {
+        grid-column: span 4;
+      }
+
+      a,
+      p,
+      label {
+        color: inherit;
+        font-family: $sans-font;
+        font-size: 0.8rem;
+        text-align: left;
+        text-decoration: none;
+      }
+
+      button {
+        font-family: $sans-font;
+        margin-top: 0.5rem;
+        border: 1px solid $sage-color;
+        color: $sage-color;
+        background: none;
+      }
+
+      .footer-policies {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .navigation {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .copy {
+        grid-column: span 4;
+        text-align: center;
+        font-family: $sans-font;
+        font-size: 0.75rem;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  }
+
   .Hero-container {
     padding: 0;
 
@@ -177,9 +235,7 @@ p {
     padding: 3rem;
 
     .item-wrapper {
-      background-position: center !important;
-      background-size: cover !important;
-      background-repeat: no-repeat !important;
+      @include fit-bg-image;
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;

@@ -6,6 +6,12 @@
   object-position: center calc(50% + #{$vertical-adjustment});
 }
 
+@mixin fit-bg-image($vertical-adjustment: 0%) {
+  background-position: center calc(50% + #{$vertical-adjustment}) !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+
 @mixin flex-row-center {
   display: flex;
   flex-direction: row;
@@ -14,12 +20,11 @@
 }
 
 @mixin underline-a {
-  a:not(.logotype) {
+  a {
     text-decoration: none;
-    text-align: center;
     position: relative;
     display: inline-block;
-    color: #000;
+    color: #7a8a8b;
     margin-left: 0.2rem;
 
     &::before {
@@ -29,7 +34,7 @@
       bottom: -0.1rem;
       width: 0;
       height: 0.1rem;
-      background-color: #000;
+      background-color: #7a8a8b;
       transition: width 0.3s linear;
     }
 
