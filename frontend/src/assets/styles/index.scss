@@ -112,9 +112,16 @@ p {
   }
 
   .Collection {
+    @include underline-a;
+
     margin: 7rem 0;
     text-align: center;
     color: $primary-color;
+
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 5rem;
+    }
 
     .images {
       display: flex;
@@ -133,18 +140,20 @@ p {
           position: relative;
 
           img {
-            @include fit-image-with-adjustment;
+            @include fit-image-with-adjustment(30%);
             position: absolute;
             top: 0;
             border: 1px solid $primary-color;
             padding: 0.75rem;
           }
+          margin-bottom: 1rem;
         }
 
         h4 {
-          margin-top: 1rem;
-          margin-bottom: 0.5rem;
           font-size: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         p {
@@ -152,22 +161,18 @@ p {
         }
 
         a {
-          text-decoration: none;
-          color: inherit;
-
-          &:hover {
-            text-decoration: underline;
-          }
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 5rem;
         }
       }
     }
   }
 
   .Informative {
+    @include flex-row-center;
     background: $primary-color;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
     color: $white-color;
     padding: 3rem;
 

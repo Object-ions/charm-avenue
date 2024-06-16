@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Collection = () => {
   return (
     <Container className="Collection">
-      <h2>Lorem ipsum dolor.</h2>
+      <h2>Lorem ipsum dolor</h2>
       <div className="images">
         <div className="item-wrapper">
           <div className="image-container">
