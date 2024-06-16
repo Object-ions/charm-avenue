@@ -1,7 +1,7 @@
-import { Container, Image } from 'react-bootstrap';
-import limitedEdition from '../assets/images/limited_edition.png';
-import necklaces from '../assets/images/necklaces.png';
-import rings from '../assets/images/rings.png';
+import { Container } from 'react-bootstrap';
+import earrings1 from '../assets/images/earrings1.png';
+import earrings2 from '../assets/images/earrings2.png';
+import earrings3 from '../assets/images/earrings3.png';
 import { Link } from 'react-router-dom';
 
 const Collection = () => {
@@ -10,21 +10,30 @@ const Collection = () => {
       <h2>Lorem ipsum dolor.</h2>
       <div className="images">
         <div className="item-wrapper">
-          <img src={necklaces} alt="necklaces" />
-          <Link>
-            <h4>Necklaces</h4>
+          <div className="image-container">
+            <img src={earrings1} alt="necklaces" />
+          </div>
+          <Link to="#">
+            <h4>YELLOW GOLD HOOP EARRINGS</h4>
+            <p>Selene - $170</p>
           </Link>
         </div>
         <div className="item-wrapper">
-          <img src={rings} alt="rings" />
-          <Link>
-            <h4>Rings</h4>
+          <div className="image-container">
+            <img src={earrings2} alt="rings" />
+          </div>
+          <Link to="#">
+            <h4>GOLD DROP EARRINGS</h4>
+            <p>Dione - $200</p>
           </Link>
         </div>
         <div className="item-wrapper">
-          <img src={limitedEdition} alt="limited edition" />
-          <Link>
-            <h4>Limited Edition</h4>
+          <div className="image-container">
+            <img src={earrings3} alt="limited edition" />
+          </div>
+          <Link to="#">
+            <h4>TWO-TONE GOLD LOOP EARRINGS</h4>
+            <p>Rhea - $210</p>
           </Link>
         </div>
       </div>

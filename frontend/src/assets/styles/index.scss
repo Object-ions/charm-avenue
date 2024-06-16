@@ -1,4 +1,5 @@
 @import '../../scss/_variables.scss';
+@import '../../scss/_mixins.scss';
 
 * {
   box-sizing: border-box;
@@ -111,33 +112,52 @@ p {
   }
 
   .Collection {
-    margin: 5rem 0;
-    display: flex;
-    flex-direction: column;
+    margin: 7rem 0;
     text-align: center;
     color: $primary-color;
 
     .images {
-      margin-top: 1rem;
       display: flex;
       justify-content: space-around;
-      width: 100%;
 
       .item-wrapper {
         width: 25%;
+        margin-top: 1rem; /* Added margin to space out items */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .image-container {
+          width: 100%;
+          padding-top: 100%; /* Creates a square container */
+          position: relative;
+
+          img {
+            @include fit-image-with-adjustment;
+            position: absolute;
+            top: 0;
+            border: 1px solid $primary-color;
+            padding: 0.75rem;
+          }
+        }
+
+        h4 {
+          margin-top: 1rem;
+          margin-bottom: 0.5rem;
+          font-size: 1rem;
+        }
+
+        p {
+          margin: 0;
+        }
 
         a {
           text-decoration: none;
+          color: inherit;
 
           &:hover {
             text-decoration: underline;
           }
-        }
-
-        img {
-          width: 100%;
-          border: 1px solid $primary-color;
-          padding: 0.75rem;
         }
       }
     }

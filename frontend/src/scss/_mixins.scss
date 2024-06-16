@@ -1,0 +1,7 @@
+@mixin fit-image-with-adjustment($vertical-adjustment: 30%) {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center calc(50% + #{$vertical-adjustment});
+}
