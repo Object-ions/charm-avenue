@@ -1,10 +1,27 @@
 @import '../../scss/_variables.scss';
 
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $sans-font;
+}
+
+p {
+  font-family: $serif-font;
+}
+
 .page {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  height: 100%;
   background: $secondary-color;
 
   nav {
@@ -51,14 +68,12 @@
 
     h2 {
       font-size: 3rem;
-      font-family: $sans-font;
       color: $primary-color;
     }
 
     p {
       color: $primary-color;
       font-size: 1.3rem;
-      font-family: $serif-font;
     }
 
     button {
@@ -70,6 +85,28 @@
         color: $primary-color;
         background: $secondary-color;
       }
+    }
+  }
+
+  .Upcoming {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem;
+    height: 417px;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+
+    h2 {
+      font-size: 2rem;
+      color: $white-color;
+    }
+
+    h3 {
+      color: $white-color;
+      font-size: 1.3rem;
     }
   }
 }
