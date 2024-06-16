@@ -142,6 +142,33 @@ p {
       }
     }
   }
+
+  .Informative {
+    background: $primary-color;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: $white-color;
+    padding: 3rem;
+
+    .item-wrapper {
+      background-position: center !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 45%;
+      height: 25rem;
+      text-align: center;
+      padding: 2rem;
+      border: 10px solid $white-color;
+
+      p {
+        font-weight: 200;
+      }
+    }
+  }
 }
 
 .button {
