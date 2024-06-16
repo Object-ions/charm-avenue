@@ -25,6 +25,85 @@ p {
   height: 100%;
   background: $secondary-color;
 
+  header {
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .navbar-nav {
+        a {
+          font-family: $sans-font;
+          color: $secondary-color;
+          &:hover {
+            color: $sage-color;
+          }
+        }
+      }
+
+      .navbar-brand {
+        margin: 0 auto;
+        font-family: $sans-font;
+        font-size: 2rem;
+        color: $secondary-color;
+      }
+
+      .btn-link,
+      .menu-icon {
+        border: none;
+        background: transparent;
+        padding: 0;
+        color: $secondary-color;
+
+        &:focus {
+          outline: none;
+        }
+
+        svg {
+          color: $secondary-color;
+        }
+
+        &:hover {
+          svg {
+            color: $sage-color;
+          }
+        }
+      }
+
+      .nav-link {
+        color: $secondary-color;
+
+        svg {
+          color: $secondary-color;
+        }
+
+        &:hover {
+          color: $sage-color;
+          svg {
+            color: $sage-color;
+          }
+        }
+      }
+
+      .offcanvas-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .offcanvas-title {
+        color: $secondary-color;
+      }
+
+      .offcanvas-body .nav-link {
+        color: $secondary-color;
+        &:hover {
+          color: $sage-color;
+        }
+      }
+    }
+  }
+
   nav {
     background: $primary-color;
 
