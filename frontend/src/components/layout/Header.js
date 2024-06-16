@@ -110,19 +110,28 @@ const Header = () => {
         </Container>
       </Navbar>
 
-      <Offcanvas show={show} onHide={handleClose}>
+      <Offcanvas show={show} onHide={handleClose} className="off-canvas">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Menu</Offcanvas.Title>
+          <Offcanvas.Title>
+            <h3>
+              <b>Menu</b>
+            </h3>
+          </Offcanvas.Title>
         </Offcanvas.Header>
+
+        <Offcanvas.Header>
+          <SearchBox handleClose={handleClose} />
+        </Offcanvas.Header>
+
         <Offcanvas.Body>
-          <Nav className="flex-column">
-            <LinkContainer to="/products">
+          <Nav className="flex-column" style={{ fontFamily: 'Crimson Text' }}>
+            <LinkContainer to="/products" style={{ fontSize: '1.3rem' }}>
               <Nav.Link onClick={handleClose}>Jewelry Collection</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/about">
+            <LinkContainer to="/about" style={{ fontSize: '1.3rem' }}>
               <Nav.Link onClick={handleClose}>About</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/contact">
+            <LinkContainer to="/contact" style={{ fontSize: '1.3rem' }}>
               <Nav.Link onClick={handleClose}>Contact Us</Nav.Link>
             </LinkContainer>
           </Nav>
