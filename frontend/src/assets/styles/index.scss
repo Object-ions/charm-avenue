@@ -172,7 +172,6 @@ p {
 
   .Promise {
     padding-top: 5rem;
-    height: 25rem;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -188,15 +187,26 @@ p {
     }
 
     .promise-grid {
+      margin-top: 10rem;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
       grid-gap: 5rem;
 
       .promise-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
         .image-wrapper {
           img {
-            width: 25%;
+            width: 50px;
+            margin-bottom: 1rem;
           }
+        }
+
+        h6 {
+          margin-top: auto;
         }
       }
     }
