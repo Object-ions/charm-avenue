@@ -32,11 +32,15 @@ import ProductListScreen from './screens/admin/ProductListScreen';
 import ProductEditScreen from './screens/admin/ProductEditScreen';
 import UserListScreen from './screens/admin/UserListScreen';
 import UserEditScreen from './screens/admin/UserEditScreen';
+import AboutScreen from './screens/AboutScreen';
+import ContactScreen from './screens/ContactScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index={true} path="/" element={<HomeScreen />} />
+      <Route path="/about" element={<AboutScreen />} />
+      <Route path="/contact" element={<ContactScreen />} />
       <Route path="/products" element={<ProductsHomeScreen />} />
       <Route path="/search/:keyword" element={<ProductsHomeScreen />} />
       <Route
