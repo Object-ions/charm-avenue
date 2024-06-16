@@ -109,6 +109,39 @@ p {
       font-size: 1.3rem;
     }
   }
+
+  .Collection {
+    margin: 5rem 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: $primary-color;
+
+    .images {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+
+      .item-wrapper {
+        width: 25%;
+
+        a {
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+
+        img {
+          width: 100%;
+          border: 1px solid $primary-color;
+          padding: 0.75rem;
+        }
+      }
+    }
+  }
 }
 
 .button {
