@@ -84,7 +84,7 @@ const ProductScreen = () => {
           <Meta title={product.name} />
           <Row>
             <Col md={5}>
-              <Image src={product.imageUrl} alt={product.name} fluid />
+              <Image src={product.image} alt={product.name} fluid />
             </Col>
 
             <Col md={5} style={{ margin: 'auto' }}>

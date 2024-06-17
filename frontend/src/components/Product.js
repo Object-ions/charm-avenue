@@ -9,11 +9,7 @@ const Product = ({ product }) => {
       style={{ borderRadius: '0', borderColor: '#303f3c' }}
     >
       <Link to={`/products/${product._id}`} alt={product.name}>
-        <Card.Img
-          src={product.imageUrl}
-          variant="top"
-          className="card-img-top"
-        />
+        <Card.Img src={product.image} variant="top" className="card-img-top" />
       </Link>
       <Card.Body className="card-body" style={{ color: '#303f3c' }}>
         <Link to={`/products/${product._id}`} alt={product.name}>
