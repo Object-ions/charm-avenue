@@ -8,6 +8,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { useCreateOrderMutation } from '../slices/ordersApiSlice';
 import { clearCartItems } from '../slices/cartSlice';
+import { addCommas } from '../utils/addCommas';
 
 const PlaceOrderScreen = () => {
   const navigate = useNavigate();
@@ -74,7 +75,7 @@ const PlaceOrderScreen = () => {
                       <Row>
                         <Col md={1}>
                           <Image
-                            src={item.image}
+                            src={item.imageUrl}
                             alt={item.name}
                             fluid
                             rounded
@@ -84,7 +85,8 @@ const PlaceOrderScreen = () => {
                           <Link to={`/products/${item._id}`}>{item.name}</Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {item.qty} x ${addCommas(item.price)} = $
+                          {addCommas(item.qty * item.price)}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -103,19 +105,19 @@ const PlaceOrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items:</Col>
-                  <Col>${cart.itemsPrice}</Col>
+                  <Col>${addCommas(cart.itemsPrice)}</Col>
                 </Row>
                 <Row>
                   <Col>Shipping:</Col>
-                  <Col>${cart.shippingPrice}</Col>
+                  <Col>${addCommas(cart.shippingPrice)}</Col>
                 </Row>
                 <Row>
                   <Col>Tax:</Col>
-                  <Col>${cart.taxPrice}</Col>
+                  <Col>${addCommas(cart.taxPrice)}</Col>
                 </Row>
                 <Row>
                   <Col>Total:</Col>
-                  <Col>${cart.totalPrice}</Col>
+                  <Col>${addCommas(cart.totalPrice)}</Col>
                 </Row>
               </ListGroup.Item>
 

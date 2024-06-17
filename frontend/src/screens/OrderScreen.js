@@ -20,6 +20,7 @@ import {
 } from '../slices/ordersApiSlice';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
+import { addCommas } from '../utils/addCommas';
 
 const OrderScreen = () => {
   const { id: orderId } = useParams();
@@ -162,13 +163,19 @@ const OrderScreen = () => {
                 <ListGroup.Item key={index}>
                   <Row>
                     <Col md={1}>
-                      <Image src={item.image} alt={item.name} fluid rounded />
+                      <Image
+                        src={item.imageUrl}
+                        alt={item.name}
+                        fluid
+                        rounded
+                      />
                     </Col>
                     <Col>
                       <Link to={`/products/${item.product}`}>{item.name}</Link>
                     </Col>
                     <Col>
-                      {item.qty} x {item.price} = {item.qty * item.price}
+                      {item.qty} x {addCommas(item.price)} ={' '}
+                      {addCommas(item.qty * item.price)}
                     </Col>
                   </Row>
                 </ListGroup.Item>

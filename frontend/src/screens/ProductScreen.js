@@ -20,6 +20,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { toast } from 'react-toastify';
 import Meta from '../components/Meta';
+import { addCommas } from '../utils/addCommas';
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -68,7 +69,7 @@ const ProductScreen = () => {
 
   return (
     <>
-      <Link className="btn btn-light my-3" to="/products">
+      <Link className="btn my-3" to="/products">
         Go Back
       </Link>
 
@@ -86,7 +87,7 @@ const ProductScreen = () => {
               <Image src={product.imageUrl} alt={product.name} fluid />
             </Col>
 
-            <Col md={4}>
+            <Col md={5} style={{ margin: 'auto' }}>
               <ListGroup variant="flush">
                 <ListGroup.Item>
                   <h3>{product.name}</h3>
@@ -101,16 +102,14 @@ const ProductScreen = () => {
                   Description: {product.description}
                 </ListGroup.Item>
               </ListGroup>
-            </Col>
 
-            <Col md={3}>
               <Card>
                 <ListGroup variant="flush">
                   <ListGroup.Item>
                     <Row>
                       <Col>Price:</Col>
                       <Col>
-                        <strong>${product.price}</strong>
+                        <strong>${addCommas(product.price)}</strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -167,7 +166,7 @@ const ProductScreen = () => {
           </Row>
           <Row className="review">
             <Col md={6}>
-              <h2>Reviews</h2>
+              {/* <h2>Reviews</h2> */}
               {product.reviews.length === 0 && <Message>No Reviews</Message>}
               <ListGroup variant="flush">
                 {product.reviews.map((review) => (
