@@ -5,14 +5,14 @@ const reviewSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: 'User', // Reference- specify where is this user coming from (which collection)
+      ref: 'User',
     },
     name: {
       type: String,
       required: true,
     },
     rating: {
-      type: String,
+      type: Number,
       required: true,
     },
     comment: {
@@ -30,17 +30,13 @@ const productSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: 'User', // Reference- specify where is this user coming from (which collection)
+      ref: 'User',
     },
     name: {
       type: String,
       required: true,
     },
-    image: {
-      type: String,
-      required: true,
-    },
-    brand: {
+    imageUrl: {
       type: String,
       required: true,
     },
@@ -48,6 +44,12 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    tags: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
     description: {
       type: String,
       required: true,
@@ -77,6 +79,6 @@ const productSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Product = mongoose.model('Product', productSchema); // we are passing the model that we creating (Product) and the schema that it is going to use (productSchema)
+const Product = mongoose.model('Product', productSchema);
 
 export default Product;
