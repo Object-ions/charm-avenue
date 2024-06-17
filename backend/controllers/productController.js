@@ -148,6 +148,24 @@ const getTopProducts = asyncHandler(async (req, res) => {
   res.status(200).json(products);
 });
 
+// @desc Get all tags
+// @route GET /api/products/tags
+// @access public
+const getTags = asyncHandler(async (req, res) => {
+  const tags = await Product.find().distinct('tags');
+
+  res.status(200).json(tags);
+});
+
+// @desc Get products by tags
+// @route GET /api/products/tags/:tag
+// @access public
+const getProductByTag = asyncHandler(async (req, res) => {
+  const products = await Product.find({ tags: req.params.tag });
+
+  res.status(200).json(products);
+});
+
 export {
   getProducts,
   getProductById,
@@ -156,4 +174,6 @@ export {
   deleteProduct,
   createProductReview,
   getTopProducts,
+  getTags,
+  getProductByTag,
 };
