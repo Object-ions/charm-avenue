@@ -45,9 +45,9 @@ const router = createBrowserRouter(
       <Route path="/search/:keyword" element={<ProductsHomeScreen />} />
       <Route
         path="/search/:keyword/page/:pageNumber"
-        element={<HomeScreen />}
+        element={<ProductsHomeScreen />}
       />
-      <Route path="/page/:pageNumber" element={<HomeScreen />} />
+      <Route path="/page/:pageNumber" element={<ProductsHomeScreen />} />
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/register" element={<RegisterScreen />} />
       <Route path="/cart" element={<CartScreen />} />
