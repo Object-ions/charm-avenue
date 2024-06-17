@@ -90,7 +90,7 @@ const Header = () => {
               </NavDropdown>
             )}
 
-            {!userInfo.isAdmin && (
+            {userInfo && !userInfo.isAdmin && (
               <LinkContainer to="/cart">
                 <Nav.Link>
                   <LuShoppingCart size={24} />
