@@ -1,26 +1,31 @@
 import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Rating from './Rating';
+import { addCommas } from '../utils/addCommas';
 
 const Product = ({ product }) => {
   return (
-    <Card className="my-3 p-3 rounded">
+    <Card
+      className="my-3 p-3"
+      style={{ borderRadius: '0', borderColor: '#303f3c' }}
+    >
       <Link to={`/products/${product._id}`} alt={product.name}>
-        <Card.Img src={product.image} variant="top" />
+        <Card.Img
+          src={product.imageUrl}
+          variant="top"
+          className="card-img-top"
+        />
       </Link>
-      <Card.Body>
+      <Card.Body className="card-body" style={{ color: '#303f3c' }}>
         <Link to={`/products/${product._id}`} alt={product.name}>
-          <Card.Title as="div">{product.name}</Card.Title>
+          <Card.Title
+            as="div"
+            className="product-title"
+            style={{ color: '#303f3c' }}
+          >
+            {product.name}
+          </Card.Title>
         </Link>
-
-        <Card.Title as="div" className="product-title">
-          <Rating
-            value={product.rating}
-            text={`${product.numReviews} reviews`}
-          />
-        </Card.Title>
-
-        <Card.Text as="h3">${product.price}</Card.Text>
+        <Card.Text as="h4">${addCommas(product.price)}</Card.Text>
       </Card.Body>
     </Card>
   );
