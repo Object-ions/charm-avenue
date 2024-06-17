@@ -188,22 +188,22 @@ const OrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>$ {order.itemsPrice}</Col>
+                  <Col>$ {addCommas(order.itemsPrice)}</Col>
                 </Row>
 
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>$ {order.shippingPrice}</Col>
+                  <Col>$ {addCommas(order.shippingPrice)}</Col>
                 </Row>
 
                 <Row>
                   <Col>Tax</Col>
-                  <Col>$ {order.taxPrice}</Col>
+                  <Col>$ {addCommas(order.taxPrice)}</Col>
                 </Row>
 
                 <Row>
                   <Col>Total Price</Col>
-                  <Col>$ {order.totalPrice}</Col>
+                  <Col>$ {addCommas(order.totalPrice)}</Col>
                 </Row>
               </ListGroup.Item>
 
