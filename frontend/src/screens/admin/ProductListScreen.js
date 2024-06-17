@@ -103,7 +103,7 @@ const ProductListScreen = () => {
                       style={{ color: '#fff' }}
                       onClick={() => deleteHandler(product._id)}
                     >
-                      <FaTrash />
+                      <FaTrash style={{ color: 'black' }} />
                     </Button>
                   </td>
                 </tr>

@@ -74,7 +74,7 @@ const CartScreen = () => {
                       variant="light"
                       onClick={() => removeFromCartHandler(item._id)}
                     >
-                      <FaTrash />
+                      <FaTrash style={{ color: 'black' }} />
                     </Button>
                   </Col>
                 </Row>
