@@ -8,14 +8,10 @@ import {
   NavDropdown,
   Offcanvas,
   Button,
+  CloseButton,
 } from 'react-bootstrap';
-import {
-  LuShoppingCart,
-  LuUser,
-  LuUserPlus,
-  LuMenu,
-  LuUserCog,
-} from 'react-icons/lu';
+import { LuShoppingCart, LuUser, LuMenu, LuUserCog } from 'react-icons/lu';
+import { IoMdClose } from 'react-icons/io';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useLogoutMutation } from '../../slices/usersApiSlice';
 import { logout } from '../../slices/authSlice';
@@ -111,12 +107,19 @@ const Header = () => {
       </Navbar>
 
       <Offcanvas show={show} onHide={handleClose} className="off-canvas">
-        <Offcanvas.Header closeButton>
+        <Offcanvas.Header>
           <Offcanvas.Title>
             <h3>
               <b>Menu</b>
             </h3>
           </Offcanvas.Title>
+          <CloseButton
+            aria-label="Close"
+            onClick={handleClose}
+            style={{ background: '#303f3c !important' }}
+          >
+            <IoMdClose />
+          </CloseButton>
         </Offcanvas.Header>
 
         <Offcanvas.Header>

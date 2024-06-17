@@ -1,10 +1,11 @@
 import React from 'react';
 import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import aboutImage from '../assets/images/bg.png';
 
 const ContactScreen = () => {
   return (
     <Container className="contact-screen">
-      <Row className="align-items-center">
+      <Row className="align-items-center" style={{ fontFamily: 'Crimson Tex' }}>
         <Col md={6}>
           <h2>Contact Us</h2>
           <p>
@@ -33,17 +34,11 @@ const ContactScreen = () => {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="mt-3">
-              Submit
-            </Button>
+            <Button type="submit">Submit</Button>
           </Form>
         </Col>
         <Col md={6}>
-          <img
-            src="https://via.placeholder.com/500"
-            alt="Contact Us"
-            className="img-fluid"
-          />
+          <img src={aboutImage} alt="Contact Us" className="img-fluid" />
         </Col>
       </Row>
     </Container>

@@ -14,6 +14,23 @@ h6 {
   font-family: $sans-font;
 }
 
+button {
+  background: none !important;
+  border-color: #303f3c !important;
+  color: #303f3c !important;
+  border-radius: 0 !important;
+  margin-top: 10px !important;
+  font-family: $sans-font !important;
+
+  a {
+    text-decoration: none !important;
+  }
+}
+
+.form-control {
+  border-radius: 0 !important;
+}
+
 .page {
   display: flex;
   flex-direction: column;
@@ -376,6 +393,8 @@ h6 {
 }
 
 .search-input {
+  border: none !important;
+  border-bottom: 1px solid $primary-color !important;
   &::placeholder {
     font-family: 'Julius Sans One';
   }
