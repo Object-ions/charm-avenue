@@ -398,6 +398,65 @@ button {
       }
     }
   }
+
+  .carousel-container {
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+
+    h3 {
+      text-align: center;
+    }
+
+    .carousel-item {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .carousel-caption {
+      background-color: $primary-color;
+      color: $secondary-color;
+      padding: 1rem;
+
+      h2 {
+        font-size: 1rem;
+        margin: 0;
+      }
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: transparent;
+      filter: invert(1);
+    }
+
+    a.carousel-control-prev-icon {
+      background-image: none;
+      text-decoration: none;
+
+      &:after {
+        content: '<';
+        color: $primary-color;
+        font-size: 30px;
+      }
+    }
+
+    a.carousel-control-next-icon {
+      background-image: none;
+      text-decoration: none;
+      &:after {
+        content: '>';
+        color: $primary-color;
+        font-size: 30px;
+      }
+    }
+
+    .carousel-indicators {
+      display: none;
+    }
+  }
 }
 
 .search-input {
