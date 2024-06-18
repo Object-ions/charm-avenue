@@ -1,9 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { useGetTagsQuery } from '../slices/productsApiSlice';
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
-const TagsFilter = () => {
+const StyledButton = styled(Button)`
+  margin: 5px;
+  ${(props) =>
+    props.selected &&
+    `
+    background-color: #303f3c !important;
+    color: #fff9f3 !important;
+    border-color: #303f3c !important;
+  `}
+`;
+
+const ApplyButton = styled(Button)`
+  margin-right: 5px;
+  background-color: #303f3c !important;
+  color: #fff9f3 !important;
+  border-color: #303f3c !important;
+`;
+
+const TagsFilter = ({ handleClose, applyFilter }) => {
   const navigate = useNavigate();
   const { tag: urlTag } = useParams();
   const [selectedTag, setSelectedTag] = useState(urlTag || '');
@@ -15,34 +34,56 @@ const TagsFilter = () => {
     }
   }, [urlTag]);
 
-  const handleTagChange = (e) => {
-    const newTag = e.target.value;
-    setSelectedTag(newTag);
-    if (newTag) {
-      navigate(`/products/tags/${newTag}`);
+  const handleTagClick = (tag) => {
+    setSelectedTag(tag === selectedTag ? '' : tag);
+  };
+
+  const handleApply = () => {
+    if (selectedTag) {
+      navigate(`/products/tags/${selectedTag}`);
     } else {
       navigate(`/products`);
     }
+    applyFilter();
+    handleClose();
+  };
+
+  const handleClear = () => {
+    setSelectedTag('');
+    navigate(`/products`);
+    applyFilter();
+    handleClose();
   };
 
   return (
-    <Form.Group controlId="tagsFilter">
+    <div>
       <Form.Label>Filter by Tag</Form.Label>
-      <Form.Control as="select" value={selectedTag} onChange={handleTagChange}>
-        <option value="">All</option>
+      <div className="tags-container">
         {isLoading ? (
-          <option>Loading...</option>
+          <div>Loading...</div>
         ) : error ? (
-          <option>Error loading tags</option>
+          <div>Error loading tags</div>
         ) : (
           tags.map((tag) => (
-            <option key={tag} value={tag}>
+            <StyledButton
+              key={tag}
+              variant="outline-primary"
+              className={`tag-button ${tag === selectedTag ? 'selected' : ''}`}
+              onClick={() => handleTagClick(tag)}
+              selected={tag === selectedTag}
+            >
               {tag}
-            </option>
+            </StyledButton>
           ))
         )}
-      </Form.Control>
-    </Form.Group>
+      </div>
+      <ApplyButton variant="primary" onClick={handleApply} className="mt-3">
+        Apply
+      </ApplyButton>
+      <Button variant="secondary" onClick={handleClear} className="mt-3">
+        Clear
+      </Button>
+    </div>
   );
 };
 
