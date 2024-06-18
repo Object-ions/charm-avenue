@@ -6,16 +6,23 @@ import FormContainer from '../components/FormContainer';
 import Loader from '../components/Loader';
 import { useLoginMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
+import {
+  useResetDataDestroyMutation,
+  useResetDataImportMutation,
+} from '../slices/resetSlice';
 import { toast } from 'react-toastify';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isPreparing, setIsPreparing] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [login, { isLoading }] = useLoginMutation();
+  const [resetDataDestroy] = useResetDataDestroyMutation();
+  const [resetDataImport] = useResetDataImportMutation();
 
   const { userInfo } = useSelector((state) => state.auth);
 
@@ -37,6 +44,37 @@ const LoginScreen = () => {
       navigate(redirect);
     } catch (error) {
       toast.error(error?.data?.message || error.error);
+    }
+  };
+
+  const handleAdminLogin = async () => {
+    setEmail('admin@gmail.com');
+    setPassword('ABC123!@#');
+    setIsPreparing(true);
+    await runDatabaseReset();
+    setTimeout(() => {
+      setIsPreparing(false);
+    }, 3000);
+  };
+
+  const handleGuestLogin = () => {
+    setEmail('guest@gmail.com');
+    setPassword('ABC123!@#');
+    setIsPreparing(true);
+    setTimeout(() => {
+      setIsPreparing(false);
+    }, 3000);
+    toast.success("Click 'Sign in'");
+  };
+
+  const runDatabaseReset = async () => {
+    try {
+      await resetDataDestroy().unwrap();
+      await resetDataImport().unwrap();
+      // toast.success('Database reset successfully');
+      toast.success("Click 'Sign in'");
+    } catch (error) {
+      toast.error('Failed to reset database');
     }
   };
 
@@ -62,16 +100,36 @@ const LoginScreen = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Button
-          type="submit"
-          variant="primary"
-          className="mt-2"
-          disabled={isLoading}
-        >
-          Sign In
-        </Button>
+        {isPreparing ? (
+          <Loader />
+        ) : (
+          <Button
+            type="submit"
+            variant="primary"
+            className="mt-2"
+            disabled={isLoading}
+          >
+            Sign In
+          </Button>
+        )}
         {isLoading && <Loader />}
       </Form>
+      <Button
+        variant="secondary"
+        className="mt-3"
+        onClick={handleAdminLogin}
+        disabled={isPreparing || isLoading}
+      >
+        Use as Admin
+      </Button>
+      <Button
+        variant="secondary"
+        className="mt-3"
+        onClick={handleGuestLogin}
+        disabled={isPreparing || isLoading}
+      >
+        Use as Guest
+      </Button>
       <Row className="py-3">
         <Col>
           New Customer?{' '}
