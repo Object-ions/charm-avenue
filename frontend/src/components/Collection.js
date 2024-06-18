@@ -13,7 +13,7 @@ const Collection = () => {
           <div className="image-container">
             <img src={earrings1} alt="necklaces" />
           </div>
-          <Link to="#">
+          <Link to="/products">
             <h4>YELLOW GOLD HOOP EARRINGS</h4>
             <p>Selene - $170</p>
           </Link>
@@ -22,7 +22,7 @@ const Collection = () => {
           <div className="image-container">
             <img src={earrings2} alt="rings" />
           </div>
-          <Link to="#">
+          <Link to="/products">
             <h4>GOLD DROP EARRINGS</h4>
             <p>Dione - $200</p>
           </Link>
@@ -31,7 +31,7 @@ const Collection = () => {
           <div className="image-container">
             <img src={earrings3} alt="limited edition" />
           </div>
-          <Link to="#">
+          <Link to="/products">
             <h4>TWO-TONE GOLD LOOP EARRINGS</h4>
             <p>Rhea - $210</p>
           </Link>
