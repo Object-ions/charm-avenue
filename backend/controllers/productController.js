@@ -12,10 +12,12 @@ const getProducts = asyncHandler(async (req, res) => {
     ? { name: { $regex: req.query.keyword, $options: 'i' } }
     : {}; // we want to match find not only if its directly same exact word, the 'i' is for case insensitive- so we can have a wide search
 
-  const count = await Product.countDocuments({ ...keyword }); // will get the total number of 'Product'
+  const tag = req.query.tag ? { tags: req.query.tag } : {};
+
+  const count = await Product.countDocuments({ ...keyword, ...tag }); // will get the total number of 'Product'
 
   // to get all of them we will pass an empty object
-  const products = await Product.find({ ...keyword })
+  const products = await Product.find({ ...keyword, ...tag })
     .limit(pageSize)
     .skip(pageSize * (page - 1));
   res.json({ products, page, pages: Math.ceil(count / pageSize) });
@@ -160,7 +162,7 @@ const getTags = asyncHandler(async (req, res) => {
 // @desc Get products by tags
 // @route GET /api/products/tags/:tag
 // @access public
-const getProductByTag = asyncHandler(async (req, res) => {
+const getProductsByTag = asyncHandler(async (req, res) => {
   const products = await Product.find({ tags: req.params.tag });
 
   res.status(200).json(products);
@@ -175,5 +177,5 @@ export {
   createProductReview,
   getTopProducts,
   getTags,
-  getProductByTag,
+  getProductsByTag,
 };

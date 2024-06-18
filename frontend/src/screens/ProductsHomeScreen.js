@@ -1,23 +1,26 @@
 import { Row, Col } from 'react-bootstrap';
 import Product from '../components/Product';
-import { useGetProductsQuery } from '../slices/productsApiSlice';
+import { useGetProductsQuery } from '../slices/productsApiSlice'; // use a single query hook
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { Link, useParams } from 'react-router-dom';
 import Paginate from '../components/Paginate';
 import ProductCarousel from '../components/ProductCarousel';
+import TagsFilter from '../components/TagsFilter'; // import TagsFilter
 
-const HomeScreen = () => {
-  const { keyword, pageNumber } = useParams();
+const ProductsHomeScreen = () => {
+  const { keyword, pageNumber, tag } = useParams();
 
   const { data, isLoading, error } = useGetProductsQuery({
     keyword,
     pageNumber,
+    tag,
   });
 
   return (
     <>
-      {!keyword ? (
+      <TagsFilter /> {/* add TagsFilter component */}
+      {!keyword && !tag ? ( // conditionally show ProductCarousel based on keyword and tag
         <ProductCarousel />
       ) : (
         <Link to="/products" className="btn mb-4">
@@ -25,9 +28,7 @@ const HomeScreen = () => {
         </Link>
       )}
       {isLoading ? (
-        <>
-          <Loader />
-        </>
+        <Loader />
       ) : error ? (
         <Message variant="danger">
           {error?.data?.message || error.error}
@@ -46,6 +47,7 @@ const HomeScreen = () => {
             pages={data.pages}
             page={data.page}
             keyword={keyword ? keyword : ''}
+            tag={tag} // pass tag to Paginate
           />
         </>
       )}
@@ -53,4 +55,4 @@ const HomeScreen = () => {
   );
 };
 
-export default HomeScreen;
+export default ProductsHomeScreen;
