@@ -14,7 +14,7 @@ function App() {
           <Outlet />
         </Container>
       </main>
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
       <Footer />
     </div>
   );
