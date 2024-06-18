@@ -2,10 +2,15 @@
 
 ### by Moses Atia Poston
 
+## Overview
+
+This is a full-featured e-commerce web application built with the MERN stack (MongoDB, Express, React, Node.js). The application includes product listings, user authentication, shopping cart, order management, and admin functionality.
+
 ## Live Demo
 
 This web app deployed with render.com.
 [See live demo here](https://charm-avenue.onrender.com/)
+'Sign in as Admin' in the login screen to allow full CRUD functionality.
 
 ## Table of Contents
 
@@ -33,10 +38,6 @@ This web app deployed with render.com.
 - [Known Bugs](#known-bugs)
 - [License](#license)
 - [Contact](#contact)
-
-## Overview
-
-This is a full-featured e-commerce web application built with the MERN stack (MongoDB, Express, React, Node.js). The application includes product listings, user authentication, shopping cart, order management, and admin functionality.
 
 ## Features
 
