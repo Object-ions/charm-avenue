@@ -87,16 +87,12 @@ This is a full-featured e-commerce web application built with the MERN stack (Mo
    ```sh
    cd Commerce-MERN
    ```
-3. !important! Switch branch from 'main' to 'charm-avenue':
-   ```sh
-   git clone https://github.com/Object-ions/eCommerce-MERN.git
-   ```
-4. Install the dependencies:
+3. Install the dependencies:
    ```sh
    cd frontend
    npm install
    ```
-5. Create a .env file in the root directory and add the following environment variables: (check out example.env file)
+4. Create a .env file in the root directory and add the following environment variables: (check out example.env file)
    ```sh
    NODE_ENV=development
    PORT=your_port || 4000
