@@ -63,6 +63,7 @@ This is a full-featured e-commerce web application built with the MERN stack (Mo
 - Node.js
 - Redux
 - React-Bootstrap
+- SCSS
 - JWT (JSON Web Tokens)
 - Multer
 - PayPal Developers
